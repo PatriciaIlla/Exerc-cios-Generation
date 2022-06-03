@@ -1,0 +1,2 @@
+ESTE PC - DISCO C - USUARIOS - PASTA USUARIO - IDEAPROJECTS - CTRLC C NA PASTA QUE QUERO - CTRLV EXERC, GENERATION - git add . - 
+git commit -m "nomedoprojeto", git push origin main
