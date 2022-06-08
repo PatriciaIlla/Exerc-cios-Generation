@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navi_graph"
+    app:startDestination="@id/cadastroprodutoFragment">
+
+    <fragment
+        android:id="@+id/produtoFragment"
+        android:name="com.generatioon.nofome.ProdutoFragment"
+        android:label="fragment_produto"
+        tools:layout="@layout/fragment_produto" >
+        <action
+            android:id="@+id/action_produtoFragment_to_cadastroprodutoFragment"
+            app:destination="@id/cadastroprodutoFragment"
+            app:popUpTo="@id/cadastroprodutoFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/cadastroprodutoFragment"
+        android:name="com.generatioon.nofome.CadastroprodutoFragment"
+        android:label="fragment_cadastroproduto"
+        tools:layout="@layout/fragment_cadastroproduto" >
+        <action
+            android:id="@+id/action_cadastroprodutoFragment_to_produtoFragment"
+            app:destination="@id/produtoFragment"
+            app:popUpTo="@id/produtoFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_cadastroprodutoFragment_to_produtoFragment2"
+            app:destination="@id/produtoFragment" />
+    </fragment>
+</navigation>
