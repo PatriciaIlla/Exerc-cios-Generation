@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Inserindo TODO reciclerview</string>
+    <string name="todo">ToDo</string>
+    <string name="atividade">Atividade</string>
+    <string name="nome">Nome</string>
+    <string name="data">Data</string>
+    <string name="em_andamento">Em andamento</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
