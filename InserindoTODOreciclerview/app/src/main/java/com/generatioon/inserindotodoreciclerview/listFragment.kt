@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class listFragment : Fragment() {
+class ListFragment : Fragment() {
 
 
     override fun onCreateView(
@@ -18,7 +18,7 @@ class listFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_list, container, false)
 
-        val floatingAdd = view.findViewById<FloatingActionButton>(R.id.floatngAdd)
+        val floatingAdd = view.findViewById<FloatingActionButton>(R.id.floatingAdd)
 
         floatingAdd.setOnClickListener{
             findNavController().navigate(R.id.action_listFragment_to_formFragment)
