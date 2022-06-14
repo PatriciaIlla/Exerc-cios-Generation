@@ -30,7 +30,7 @@ class Tipocestaadapter: RecyclerView.Adapter<Tipocestaadapter.TipocestaViewHolde
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return listprodut.size
     }
 
 fun setList(list:List<Tipocesta>){
