@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textCestabasica1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -22,7 +22,7 @@
             tools:text="Cesta básica 1" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textValor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"

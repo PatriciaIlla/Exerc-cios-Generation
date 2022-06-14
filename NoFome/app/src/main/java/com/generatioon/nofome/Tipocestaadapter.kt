@@ -10,7 +10,7 @@ import java.time.temporal.ValueRange
 
 class Tipocestaadapter: RecyclerView.Adapter<Tipocestaadapter.TipocestaViewHolder> (){
 
-    var listprodut = emptyList<Tipocesta>()
+    private var listprodut = emptyList<Tipocesta>()
 
     class TipocestaViewHolder (val binding: CardLayoutBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -26,7 +26,7 @@ class Tipocestaadapter: RecyclerView.Adapter<Tipocestaadapter.TipocestaViewHolde
         val produto = listprodut[position]
 
         holder.binding.textCestabasica1.text = produto.tipo
-        holder.binding.textValor.
+        holder.binding.textValor.text = produto.valor.toString()
     }
 
     override fun getItemCount(): Int {
