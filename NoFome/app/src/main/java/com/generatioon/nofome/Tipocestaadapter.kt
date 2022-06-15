@@ -25,7 +25,7 @@ class Tipocestaadapter: RecyclerView.Adapter<Tipocestaadapter.TipocestaViewHolde
     override fun onBindViewHolder(holder: TipocestaViewHolder, position: Int) {
         val produto = listprodut[position]
 
-        holder.binding.textCestabasica1.text = produto.tipo
+        holder.binding.textCestabasica1.text = produto.nomeMarca
         holder.binding.textValor.text = produto.valor.toString()
     }
 
@@ -33,10 +33,5 @@ class Tipocestaadapter: RecyclerView.Adapter<Tipocestaadapter.TipocestaViewHolde
         return listprodut.size
     }
 
-fun setList(list:List<Tipocesta>){
-    listprodut = list
+    }
 
-    notifyDataSetChanged()
-}
-
-}
