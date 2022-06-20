@@ -33,5 +33,9 @@ class Tipocestaadapter: RecyclerView.Adapter<Tipocestaadapter.TipocestaViewHolde
         return listprodut.size
     }
 
+    fun setList(body: List<Tipocesta>) {
+
     }
+
+}
 

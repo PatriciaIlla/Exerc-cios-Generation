@@ -1,7 +1,15 @@
 package com.generatioon.nofome.model
 
-data class Categoria
-    ( var id: Int,
-      var descricao: String,) {
+import com.generatioon.nofome.Tipocesta
 
-}
+data class Categoria
+    ( var id: Long,
+      var descricao: String,
+      var produtos: List<Tipocesta>) {
+
+    override fun toString(): String {
+        return descricao!!
+    }
+
+
+    }

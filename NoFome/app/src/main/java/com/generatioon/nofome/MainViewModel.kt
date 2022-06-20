@@ -24,8 +24,14 @@ class MainViewModel @Inject constructor(
 
     val myCategoriaResponse: LiveData<Response<List<Categoria>>> = _myCategoriaResponse
 
+    private val _myTipocestaResponse =
+        MutableLiveData<Response<List<Tipocesta>>>()
+
+    val myTipocestaResponse: LiveData<Response<List<Tipocesta>>> = _myTipocestaResponse
+
+
     init {
-        listCategoria()
+        //listCategoria()
     }
 
     fun listCategoria(){
@@ -33,6 +39,30 @@ class MainViewModel @Inject constructor(
             try{
                 val response = repository.listCategoria()
                 _myCategoriaResponse.value = response
+
+            }catch (e: Exception){
+                Log.d("Erro", e.message.toString())
+            }
+        }
+    }
+     fun addProduto(tipocesta: Tipocesta){
+         viewModelScope.launch {
+             try{
+                 val response = repository.addProduto(tipocesta)
+                 Log.d("Opa", response.body().toString())
+
+             }catch (e:Exception){
+                 Log.d("Erro", e.message.toString())
+             }
+         }
+     }
+
+    fun listprodut(){
+        viewModelScope.launch {
+            try {
+                val response = repository.listprodut()
+                _myTipocestaResponse.value = response
+                listprodut()
 
             }catch (e: Exception){
                 Log.d("Erro", e.message.toString())
