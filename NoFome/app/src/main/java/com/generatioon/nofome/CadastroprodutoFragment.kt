@@ -8,12 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.generatioon.nofome.databinding.FragmentCadastroprodutoBinding
-import com.generatioon.nofome.databinding.FragmentProdutoBinding
 import com.generatioon.nofome.model.Categoria
 
 
@@ -74,25 +72,29 @@ class CadastroprodutoFragment : Fragment() {
          produtos: String,
          observacoes: String,
          valorCesta: String,
-         imagemProduto: String
+         imagem: String
      ): Boolean{
          return !(
 
                          (produtos == "" ) ||
                          (observacoes == "") ||
                          (valorCesta == "") ||
-                         (imagemProduto == "")
+                         (imagem == "")
                  )
      }
 
      fun inserirbanco() {
 
-         val produtos = binding.produtos.text.toString()
-         val observacoes = binding.observacoes.text.toString()
-         val valorCesta = binding.valorCesta.text.toString()
-         val imagemProduto = binding.imagemProduto.text.toString()
+         val nomeMarca = binding.produtos.text.toString()
+         val descricao = binding.observacoes.text.toString()
+         val imagem = binding.imagemProduto.text.toString()
+         val valor = binding.valorCesta.text.toString()
+         val quantidade = binding.quantidade.text.toString()
+         val categoria = Categoria(categoriaSelecionada, null, null)
 
-         if (validarcampos(produtos,observacoes,valorCesta,imagemProduto)) {
+         if (validarcampos(nomeMarca, descricao, valor, imagem)) {
+             val tipocesta = Tipocesta(0, nomeMarca, descricao, imagem, valor, quantidade, categoria )
+             mainViewModel.addProduto(tipocesta)
              Toast.makeText(context,"Produto cadastrado com sucesso!",Toast.LENGTH_SHORT).show()
              findNavController().navigate(R.id.action_cadastroprodutoFragment_to_produtoFragment2)
 

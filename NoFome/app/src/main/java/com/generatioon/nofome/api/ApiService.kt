@@ -9,15 +9,15 @@ import retrofit2.http.POST
 
 interface ApiService {
 
-    @GET("Categoria")
+    @GET("categoria")
     suspend fun listCategoria(): Response<List<Categoria>>
 
-    @POST("Produtos")
+    @POST("produtos")
     suspend fun  addProduto(
         @Body tipocesta: Tipocesta
     ): Response<Tipocesta>
 
-    @GET("Produtos")
+    @GET("produtos")
     suspend fun  listprodut(
     ): Response<List<Tipocesta>>
 

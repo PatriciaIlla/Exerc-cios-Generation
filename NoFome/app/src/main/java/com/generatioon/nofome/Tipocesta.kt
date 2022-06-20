@@ -7,8 +7,8 @@ data class Tipocesta
      var nomeMarca: String,
      var descricao: String,
      var imagem: String,
-     var quantidade: Int,
-     var valor: Number,
+     var valor: String,
+     var quantidade: String,
      var categoria: Categoria)
 {
 }
