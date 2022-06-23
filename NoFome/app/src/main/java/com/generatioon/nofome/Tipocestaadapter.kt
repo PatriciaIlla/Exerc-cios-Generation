@@ -8,7 +8,10 @@ import com.generatioon.nofome.databinding.CardLayoutBinding
 import com.generatioon.nofome.databinding.FragmentCadastroprodutoBinding
 import java.time.temporal.ValueRange
 
-class Tipocestaadapter: RecyclerView.Adapter<Tipocestaadapter.TipocestaViewHolder> (){
+class Tipocestaadapter(
+    val basketClickListener: BasketClickListener,
+    val mainViewModel: MainViewModel
+): RecyclerView.Adapter<Tipocestaadapter.TipocestaViewHolder> (){
 
     private var listprodut = emptyList<Tipocesta>()
 
@@ -27,13 +30,20 @@ class Tipocestaadapter: RecyclerView.Adapter<Tipocestaadapter.TipocestaViewHolde
 
         holder.binding.textCestabasica1.text = produto.nomeMarca
         holder.binding.textValor.text = produto.valor.toString()
+        holder.itemView.setOnClickListener{
+            basketClickListener.onBasketClickListener(produto)
+        }
     }
 
     override fun getItemCount(): Int {
         return listprodut.size
     }
 
-    fun setList(body: List<Tipocesta>) {
+    fun setList(list: List<Tipocesta>) {
+        listprodut = list.sortedByDescending{
+            it.id
+        }
+        notifyDataSetChanged()
 
     }
 

@@ -20,6 +20,7 @@ class CadastroprodutoFragment : Fragment() {
     private lateinit var binding: FragmentCadastroprodutoBinding
     private val mainViewModel: MainViewModel by activityViewModels()
     private var categoriaSelecionada = 0L
+    private var produtoSelecionado: Tipocesta? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +28,8 @@ class CadastroprodutoFragment : Fragment() {
     ): View? {
 
         binding = FragmentCadastroprodutoBinding.inflate(layoutInflater,container,false)
+
+        carregarDados()
 
         mainViewModel.listCategoria()
 
@@ -87,19 +90,42 @@ class CadastroprodutoFragment : Fragment() {
 
          val nomeMarca = binding.produtos.text.toString()
          val descricao = binding.observacoes.text.toString()
-         val imagem = binding.imagemProduto.text.toString()
+         val imagem = binding.imagem.text.toString()
          val valor = binding.valorCesta.text.toString()
          val quantidade = binding.quantidade.text.toString()
          val categoria = Categoria(categoriaSelecionada, null, null)
 
          if (validarcampos(nomeMarca, descricao, valor, imagem)) {
-             val tipocesta = Tipocesta(0, nomeMarca, descricao, imagem, valor, quantidade, categoria )
-             mainViewModel.addProduto(tipocesta)
-             Toast.makeText(context,"Produto cadastrado com sucesso!",Toast.LENGTH_SHORT).show()
+             val salvar: String
+             if (produtoSelecionado != null){
+                 salvar = "Produto Atualizado"
+                 val tipocesta = Tipocesta(produtoSelecionado?.id!!,
+                     nomeMarca, descricao, imagem, valor.toDouble(), quantidade.toInt(), categoria)
+                 mainViewModel.updateProdutos(tipocesta)
+
+             }else{
+                 salvar = "Produto Adicionado"
+                 val tipocesta = Tipocesta(0, nomeMarca, descricao, imagem, valor.toDouble(), quantidade.toInt(), categoria )
+                 mainViewModel.addProduto(tipocesta)
+             }
+
+
+             Toast.makeText(context,salvar,Toast.LENGTH_SHORT).show()
              findNavController().navigate(R.id.action_cadastroprodutoFragment_to_produtoFragment2)
 
          } else{ Toast.makeText(context,"Erro: Verifique os campos!", Toast.LENGTH_SHORT).show()
 
          }
          }
+         private fun carregarDados(){
+             produtoSelecionado = mainViewModel.produtoSelecionado
+             if (produtoSelecionado != null){
+                 binding.produtos.setText(produtoSelecionado?.nomeMarca)
+                 binding.observacoes.setText(produtoSelecionado?.descricao)
+                 binding.imagem.setText(produtoSelecionado?.imagem)
+                 binding.valorCesta.setText(produtoSelecionado?.valor.toString())
+                 binding.quantidade.setText(produtoSelecionado?.quantidade.toString())
+             }
+         }
+
      }

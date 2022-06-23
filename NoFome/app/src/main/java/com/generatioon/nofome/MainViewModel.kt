@@ -17,6 +17,7 @@ class MainViewModel @Inject constructor(
     private val repository: Repository
         ) : ViewModel() {
 
+     var produtoSelecionado: Tipocesta? = null
 
 
     private val _myCategoriaResponse =
@@ -62,10 +63,22 @@ class MainViewModel @Inject constructor(
             try {
                 val response = repository.listprodut()
                 _myTipocestaResponse.value = response
-                listprodut()
+
 
             }catch (e: Exception){
                 Log.d("Erro", e.message.toString())
+            }
+        }
+    }
+
+    fun updateProdutos(tipocesta: Tipocesta){
+        viewModelScope.launch {
+            try {
+                repository.updateProdutos(tipocesta)
+                listprodut()
+            }catch (e: Exception){
+                Log.d("Erro", e.message.toString())
+
             }
         }
     }

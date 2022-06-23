@@ -16,4 +16,8 @@ class Repository {
     suspend fun listprodut(): Response<List<Tipocesta>>{
         return  RetrofitInstance.api.listprodut()
     }
+
+    suspend fun updateProdutos(tipocesta: Tipocesta): Response<Tipocesta>{
+        return RetrofitInstance.api.updateProdutos(tipocesta)
+    }
 }

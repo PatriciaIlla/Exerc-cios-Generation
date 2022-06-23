@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.generatioon.nofome.databinding.FragmentProdutoBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class ProdutoFragment : Fragment() {
+class ProdutoFragment : Fragment(), BasketClickListener {
   private lateinit var binding: FragmentProdutoBinding
   private val mainViewModel: MainViewModel by activityViewModels()
 
@@ -24,7 +24,7 @@ class ProdutoFragment : Fragment() {
 
         mainViewModel.listprodut()
 
-        val adapter = Tipocestaadapter()
+        val adapter = Tipocestaadapter(this, mainViewModel)
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = adapter
         binding.recyclerView.setHasFixedSize(true)
@@ -32,6 +32,7 @@ class ProdutoFragment : Fragment() {
 
 
         binding.floatingAdd.setOnClickListener{
+            mainViewModel.produtoSelecionado = null
             findNavController().navigate(R.id.action_produtoFragment_to_cadastroprodutoFragment)
         }
 
@@ -44,6 +45,11 @@ class ProdutoFragment : Fragment() {
 
         return binding.root
 
+    }
+
+    override fun onBasketClickListener(tipocesta: Tipocesta) {
+        mainViewModel.produtoSelecionado = tipocesta
+        findNavController().navigate(R.id.action_produtoFragment_to_cadastroprodutoFragment)
     }
 
 }
