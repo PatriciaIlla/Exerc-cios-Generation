@@ -107,7 +107,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:backgroundTint="#4CAF50"
+        android:backgroundTint="@color/green_"
         android:hint="@string/botaoCadastro"
         android:text="Cadastrar"
         android:textColor="#263238"
