@@ -6,7 +6,7 @@ data class Tarefa (
     val descricao: String,
     val responsavel: String,
     val data: String,
-    val status: Boolean,
+    var status: Boolean,
     val categoria: Categoria
         ){
 }
